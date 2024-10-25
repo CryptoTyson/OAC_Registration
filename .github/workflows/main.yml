@@ -1,0 +1,25 @@
+name: Check Registration Status
+
+on:
+  schedule:
+    - cron: "*/1 * * * *"  # Runs every minute
+
+jobs:
+  check-registration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run check_registration.py
+        run: |
+          python check_registration.py
