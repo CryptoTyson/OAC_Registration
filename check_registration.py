@@ -20,7 +20,7 @@ def check_registration_status():
             }
         )
         response.raise_for_status()
-        if "Registration Not Open" in response.text:
+        if "Registration Not Open" not in response.text:
             # Send message to Discord webhook
             discord_webhook_url = "https://discord.com/api/webhooks/1194121970602737756/LusPVjMKlLC1-VaTTALvf4g5JLQqVlfi0wTPy-_UazoEUasVMTFUvLPc7ohEXhxbO_9j"
             discord_data = {"content": "Registration is open"}
